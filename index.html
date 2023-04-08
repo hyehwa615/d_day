@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>과제</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Noto Sans KR', sans-serif;
+
+        }
+
+        #countdown {
+            font-size: 24px;
+            font-weight: bold;
+            padding: 20px;
+            color: #000000;
+            border-radius: 100%;
+        }
+
+        #d {
+            color: #3f3f3f;
+        }
+    </style>
+</head>
+
+<body></body>
+<p id="time">time</p>
+<p id="d"> 2023년 12월 31일까지 남은 시간!<br><br>
+    　(∩`・ω・) <br>
+    ＿/_ミつ/￣￣￣/ <br>
+    　　＼/＿＿＿/
+</p><br>
+<div id="countdown"></div>
+
+<script>
+    // 객체, 매서드 (매개 인자)
+    // console.log("HI!");
+    /* var num = 0;
+    var myDate = new Date;
+    console.log(myDate);
+    console.log(document.getElementById("time"));
+    document.getElementById("time").innerText = myDate;
+
+    setInterval(function(){
+        // console.log("HI!");
+        // console.log(num++);
+        myDate=new Date();
+        document.getElementById("time").innerText=myDate;
+    }, 1000); */
+    // 자바스크립트로 반복 실행
+
+    // 2023년 4월 3일 월요일 15:30
+    // D-day 59일
+    let myDate;
+    let year;
+    let month;
+    let date;
+    let dayArray = ["일", "월", "화", "수", "목", "금", "토"];
+    let day;
+    let hour;
+    let minute;
+
+    setInterval(function () {
+        myDate = new Date();
+        year = myDate.getFullYear() + "년 ";
+        month = myDate.getMonth() + 1 + "월 ";
+        date = myDate.getDate() + "일 ";
+        day = dayArray[myDate.getDay()] + "요일 ";
+        hour = myDate.getHours() + ":";
+        minute = myDate.getMinutes();
+        document.getElementById("time").innerText = year + month + date + day + hour + minute;
+    }, 1000);
+
+    // 디데이 날짜를 설정.
+    var dday = new Date("2023-12-31");
+
+    // 위젯을 업데이트하는 함수.
+    function updateCountdown() {
+        var now = new Date();
+        var diff = dday.getTime() - now.getTime();
+        var days = Math.ceil(diff / (1000 * 60 * 60 * 24)); // 소수점 이하를 버리고 올림 처리.
+        var countdownText = "D-" + days;
+        document.getElementById("countdown").innerHTML = countdownText;
+    }
+
+    // 페이지가 로드될 때 위젯을 업데이트.
+    updateCountdown();
+
+    // 1초마다 위젯을 업데이트.
+    setInterval(updateCountdown, 1000);
+</script>
+</body>
+
+</html>
